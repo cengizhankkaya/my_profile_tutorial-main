@@ -4,6 +4,7 @@ import 'package:my_portfolio/constants/sns_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/colors.dart';
+import 'animated_widgets.dart';
 import 'custom_text_field.dart';
 
 class ContactSection extends StatelessWidget {
@@ -11,18 +12,37 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return Container(
-      padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+      padding: EdgeInsets.fromLTRB(
+        isSmallScreen ? 20 : 25, 
+        20, 
+        isSmallScreen ? 20 : 25, 
+        60
+      ),
       color: CustomColor.bgLight1,
       child: Column(
         children: [
           // title
-          const Text(
-            "İletişime geç",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: CustomColor.whitePrimary,
+          SlideInAnimation(
+            offset: const Offset(0, -0.2),
+            child: ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [
+                  CustomColor.whitePrimary,
+                  CustomColor.bluePrimary,
+                ],
+              ).createShader(bounds),
+              child: Text(
+                "İletişime geç",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: isSmallScreen ? 20 : isMobile ? 22 : 24,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
 
@@ -60,11 +80,46 @@ class ContactSection extends StatelessWidget {
             constraints: const BoxConstraints(
               maxWidth: 700,
             ),
-            child: SizedBox(
-              width: double.maxFinite,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text("Gönder"),
+            child: SlideInAnimation(
+              offset: const Offset(0, 0.2),
+              delay: const Duration(milliseconds: 300),
+              child: HoverAnimation(
+                child: Container(
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        CustomColor.bluePrimary,
+                        CustomColor.blueSecondary,
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: CustomColor.bluePrimary.withOpacity(0.4),
+                        blurRadius: 15,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      "Gönder",
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -84,32 +139,76 @@ class ContactSection extends StatelessWidget {
             runSpacing: 12,
             alignment: WrapAlignment.center,
             children: [
-              InkWell(
-                onTap: () => _launchLink(SnsLinks.github),
-                child: Image.asset(
-                  "assets/github.png",
-                  width: 28,
+              ScaleInAnimation(
+                delay: const Duration(milliseconds: 200),
+                child: HoverAnimation(
+                  scale: 1.2,
+                  child: InkWell(
+                    onTap: () => _launchLink(SnsLinks.github),
+                    child: GlowContainer(
+                      glowColor: Colors.white,
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      child: Image.asset(
+                        "assets/github.png",
+                        width: 28,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              InkWell(
-                onTap: () => _launchLink(SnsLinks.linkedIn),
-                child: Image.asset(
-                  "assets/linkedin.png",
-                  width: 28,
+              ScaleInAnimation(
+                delay: const Duration(milliseconds: 300),
+                child: HoverAnimation(
+                  scale: 1.2,
+                  child: InkWell(
+                    onTap: () => _launchLink(SnsLinks.linkedIn),
+                    child: GlowContainer(
+                      glowColor: Colors.blue,
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      child: Image.asset(
+                        "assets/linkedin.png",
+                        width: 28,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              InkWell(
-                onTap: () => _launchLink(SnsLinks.medium),
-                child: Image.asset(
-                  "assets/medium.png",
-                  width: 28,
+              ScaleInAnimation(
+                delay: const Duration(milliseconds: 400),
+                child: HoverAnimation(
+                  scale: 1.2,
+                  child: InkWell(
+                    onTap: () => _launchLink(SnsLinks.medium),
+                    child: GlowContainer(
+                      glowColor: Colors.green,
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      child: Image.asset(
+                        "assets/medium.png",
+                        width: 28,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              InkWell(
-                onTap: () => _launchLink(SnsLinks.instagram),
-                child: Image.asset(
-                  "assets/instagram.png",
-                  width: 28,
+              ScaleInAnimation(
+                delay: const Duration(milliseconds: 500),
+                child: HoverAnimation(
+                  scale: 1.2,
+                  child: InkWell(
+                    onTap: () => _launchLink(SnsLinks.instagram),
+                    child: GlowContainer(
+                      glowColor: Colors.pink,
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      child: Image.asset(
+                        "assets/instagram.png",
+                        width: 28,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -52,6 +52,8 @@ class _CvSectionState extends State<CvSection>
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isDesktop = screenWidth >= kMinDesktopWidth;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
 
     return FadeTransition(
       opacity: _fadeAnimation,
@@ -59,7 +61,12 @@ class _CvSectionState extends State<CvSection>
         position: _slideAnimation,
         child: Container(
           width: screenWidth,
-          padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+          padding: EdgeInsets.fromLTRB(
+            isSmallScreen ? 20 : 25, 
+            20, 
+            isSmallScreen ? 20 : 25, 
+            60
+          ),
           decoration: BoxDecoration(
             color: CustomColor.bgLight1,
             gradient: LinearGradient(
@@ -82,32 +89,32 @@ class _CvSectionState extends State<CvSection>
                       children: [
                         Container(
                           width: 4,
-                          height: 40,
+                          height: isSmallScreen ? 32 : 40,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                CustomColor.yellowPrimary,
-                                CustomColor.yellowPrimary.withOpacity(0.3),
+                                CustomColor.bluePrimary,
+                                CustomColor.bluePrimary.withOpacity(0.3),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(2),
                           ),
                         ),
-                        const SizedBox(width: 15),
-                        const Text(
+                        SizedBox(width: isSmallScreen ? 12 : 15),
+                        Text(
                           "Özgeçmiş",
                           style: TextStyle(
-                            fontSize: 28,
+                            fontSize: isSmallScreen ? 22 : isMobile ? 24 : 28,
                             fontWeight: FontWeight.bold,
                             color: CustomColor.whitePrimary,
-                            letterSpacing: 1.2,
+                            letterSpacing: isSmallScreen ? 0.8 : 1.2,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 50),
+                    SizedBox(height: isSmallScreen ? 30 : 50),
                 // Eğitim Bölümü
                 _buildSection(
                   title: "Eğitim",
@@ -132,7 +139,7 @@ class _CvSectionState extends State<CvSection>
                   ],
                 ),
                 
-                const SizedBox(height: 40),
+                SizedBox(height: isSmallScreen ? 30 : 40),
                 
                 // İş Deneyimi Bölümü
                 _buildSection(
@@ -148,7 +155,7 @@ class _CvSectionState extends State<CvSection>
                       isDesktop: isDesktop,
                       index: 0,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: isSmallScreen ? 16 : 20),
                     _buildExperienceItem(
                       position: "Mobil Uygulama Geliştirme Stajyeri (Flutter)",
                       company: "Ege Serbest Bölge Kuruluş ve İşletme A.Ş",
@@ -160,7 +167,7 @@ class _CvSectionState extends State<CvSection>
                   ],
                 ),
                 
-                const SizedBox(height: 40),
+                SizedBox(height: isSmallScreen ? 30 : 40),
                 
                 // Sertifikalar / Etkinlikler Bölümü
                 _buildSection(
@@ -174,14 +181,14 @@ class _CvSectionState extends State<CvSection>
                       date: "2022",
                       index: 0,
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: isSmallScreen ? 12 : 15),
                     _buildCertificateItem(
                       name: "SQL Öğrenme",
                       issuer: "Ömer Çolakoğlu Udemy Kursu",
                       date: "",
                       index: 1,
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: isSmallScreen ? 12 : 15),
                     _buildCertificateItem(
                       name: "MySQL Eğitimi",
                       issuer: "Microsoft MVP – Ömer Çolakoğlu",
@@ -191,7 +198,7 @@ class _CvSectionState extends State<CvSection>
                   ],
                 ),
                 
-                const SizedBox(height: 40),
+                SizedBox(height: isSmallScreen ? 30 : 40),
                 
                 // Diller Bölümü
                 _buildSection(
@@ -204,13 +211,13 @@ class _CvSectionState extends State<CvSection>
                       level: "Ana Dil",
                       index: 0,
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: isSmallScreen ? 12 : 15),
                     _buildLanguageItem(
                       language: "İngilizce",
                       level: "Başlangıç Seviyesi",
                       index: 1,
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: isSmallScreen ? 12 : 15),
                     _buildLanguageItem(
                       language: "Almanca",
                       level: "Başlangıç Seviyesi",
@@ -219,7 +226,7 @@ class _CvSectionState extends State<CvSection>
                   ],
                 ),
                 
-                const SizedBox(height: 40),
+                SizedBox(height: isSmallScreen ? 30 : 40),
                 
                 // Yetenekler Bölümü
                 _buildSection(
@@ -243,7 +250,7 @@ class _CvSectionState extends State<CvSection>
                         "Swift (Beginner)",
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: isSmallScreen ? 16 : 20),
                     _buildSkillsCategory(
                       title: "Yazılımlar ve Araçlar",
                       skills: [
@@ -268,6 +275,9 @@ class _CvSectionState extends State<CvSection>
     required List<Widget> children,
     int delay = 0,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 800 + delay),
@@ -279,8 +289,8 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(0, 30 * (1 - value)),
             child: Container(
               width: double.infinity,
-              margin: const EdgeInsets.symmetric(vertical: 16),
-              padding: const EdgeInsets.all(24),
+              margin: EdgeInsets.symmetric(vertical: isSmallScreen ? 12 : 16),
+              padding: EdgeInsets.all(isSmallScreen ? 16 : isMobile ? 20 : 24),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
                 color: CustomColor.bgLight2,
@@ -302,30 +312,32 @@ class _CvSectionState extends State<CvSection>
                   Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(isSmallScreen ? 8 : 10),
                         decoration: BoxDecoration(
-                          color: CustomColor.yellowPrimary.withOpacity(0.2),
+                          color: CustomColor.bluePrimary.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
                           icon,
-                          color: CustomColor.yellowPrimary,
-                          size: 28,
+                          color: CustomColor.bluePrimary,
+                          size: isSmallScreen ? 22 : isMobile ? 24 : 28,
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          color: CustomColor.whitePrimary,
-                          letterSpacing: 0.5,
+                      SizedBox(width: isSmallScreen ? 12 : 16),
+                      Flexible(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 18 : isMobile ? 20 : 24,
+                            fontWeight: FontWeight.w700,
+                            color: CustomColor.whitePrimary,
+                            letterSpacing: isSmallScreen ? 0.3 : 0.5,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: isSmallScreen ? 16 : 24),
                   ...children,
                 ],
               ),
@@ -343,6 +355,9 @@ class _CvSectionState extends State<CvSection>
     required String description,
     required int index,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 600 + (index * 100)),
@@ -354,12 +369,12 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(20 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index == 0 ? 16 : 0),
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
                 border: Border.all(
-                  color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  color: CustomColor.blueSecondary.withOpacity(0.4),
                 ),
               ),
               child: Column(
@@ -372,50 +387,54 @@ class _CvSectionState extends State<CvSection>
                       Expanded(
                         child: Text(
                           degree,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 16 : isMobile ? 17 : 18,
                             fontWeight: FontWeight.w700,
                             color: CustomColor.whitePrimary,
                           ),
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: CustomColor.bgLight1.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: CustomColor.yellowSecondary.withOpacity(0.4),
+                      SizedBox(width: isSmallScreen ? 8 : 12),
+                      Flexible(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isSmallScreen ? 8 : 12,
+                            vertical: isSmallScreen ? 5 : 6,
                           ),
-                        ),
-                        child: Text(
-                          period,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            color: CustomColor.whiteSecondary,
+                          decoration: BoxDecoration(
+                            color: CustomColor.bgLight1.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: CustomColor.blueSecondary.withOpacity(0.4),
+                            ),
+                          ),
+                          child: Text(
+                            period,
+                            style: TextStyle(
+                              fontSize: isSmallScreen ? 11 : 13,
+                              color: CustomColor.whiteSecondary,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ],
                   ),
                   if (school.isNotEmpty) ...[
-                    const SizedBox(height: 12),
+                    SizedBox(height: isSmallScreen ? 8 : 12),
                     Row(
                       children: [
                         Icon(
                           Icons.location_on,
-                          size: 16,
+                          size: isSmallScreen ? 14 : 16,
                           color: CustomColor.whiteSecondary,
                         ),
-                        const SizedBox(width: 6),
+                        SizedBox(width: isSmallScreen ? 4 : 6),
                         Expanded(
                           child: Text(
                             school,
-                            style: const TextStyle(
-                              fontSize: 15,
+                            style: TextStyle(
+                              fontSize: isSmallScreen ? 13 : 15,
                               color: CustomColor.whiteSecondary,
                               height: 1.4,
                             ),
@@ -425,11 +444,11 @@ class _CvSectionState extends State<CvSection>
                     ),
                   ],
                   if (description.isNotEmpty) ...[
-                    const SizedBox(height: 8),
+                    SizedBox(height: isSmallScreen ? 6 : 8),
                     Text(
                       description,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: isSmallScreen ? 12 : 14,
                         color: CustomColor.hintDark,
                       ),
                     ),
@@ -451,6 +470,9 @@ class _CvSectionState extends State<CvSection>
     required bool isDesktop,
     required int index,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 700 + (index * 100)),
@@ -462,90 +484,86 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(20 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index == 0 ? 16 : 0),
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
                 border: Border.all(
-                  color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  color: CustomColor.blueSecondary.withOpacity(0.4),
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Pozisyon başlığı
+                  Text(
+                    position,
+                    style: TextStyle(
+                      fontSize: isSmallScreen ? 16 : isMobile ? 17 : 18,
+                      fontWeight: FontWeight.w700,
+                      color: CustomColor.whitePrimary,
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 8 : 10),
+                  // Şirket adı
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              position,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: CustomColor.whitePrimary,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.business,
-                                  size: 16,
-                                  color: CustomColor.yellowPrimary,
-                                ),
-                                const SizedBox(width: 6),
-                                Expanded(
-                                  child: Text(
-                                    company,
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      color: CustomColor.yellowPrimary,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Icon(
+                        Icons.business,
+                        size: isSmallScreen ? 14 : 16,
+                        color: CustomColor.bluePrimary,
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: CustomColor.bgLight1.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: CustomColor.yellowSecondary.withOpacity(0.4),
-                          ),
-                        ),
+                      SizedBox(width: isSmallScreen ? 4 : 6),
+                      Expanded(
                         child: Text(
-                          period,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            color: CustomColor.whiteSecondary,
+                          company,
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 13 : 15,
+                            color: CustomColor.bluePrimary,
+                            fontWeight: FontWeight.w500,
+                            height: 1.4,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: isSmallScreen ? 10 : 12),
+                  // Tarih etiketi - mobilde alt satırda
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 10 : 12,
+                        vertical: isSmallScreen ? 6 : 7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: CustomColor.bgLight1.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: CustomColor.blueSecondary.withOpacity(0.4),
+                        ),
+                      ),
+                      child: Text(
+                        period,
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 11 : 13,
+                          color: CustomColor.whiteSecondary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? 12 : 16),
+                  // Açıklama
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14),
                       color: CustomColor.bgLight1.withOpacity(0.5),
                     ),
                     child: Text(
                       description,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: isSmallScreen ? 12 : 14,
                         color: CustomColor.whiteSecondary,
                         height: 1.6,
                       ),
@@ -566,6 +584,9 @@ class _CvSectionState extends State<CvSection>
     required String date,
     required int index,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 500 + (index * 80)),
@@ -577,81 +598,84 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(15 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index < 2 ? 12 : 0),
-              padding: const EdgeInsets.all(18),
+              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 18),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
                 border: Border.all(
-                  color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  color: CustomColor.blueSecondary.withOpacity(0.4),
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: CustomColor.yellowPrimary.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(
-                            Icons.verified,
-                            size: 20,
-                            color: CustomColor.yellowPrimary,
-                          ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
+                        decoration: BoxDecoration(
+                          color: CustomColor.bluePrimary.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                name,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: CustomColor.whitePrimary,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                issuer,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  color: CustomColor.whiteSecondary,
-                                  height: 1.4,
-                                ),
-                              ),
-                            ],
-                          ),
+                        child: Icon(
+                          Icons.verified,
+                          size: isSmallScreen ? 18 : 20,
+                          color: CustomColor.bluePrimary,
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(width: isSmallScreen ? 10 : 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              name,
+                              style: TextStyle(
+                                fontSize: isSmallScreen ? 13 : 15,
+                                fontWeight: FontWeight.w600,
+                                color: CustomColor.whitePrimary,
+                              ),
+                            ),
+                            SizedBox(height: isSmallScreen ? 3 : 4),
+                            Text(
+                              issuer,
+                              style: TextStyle(
+                                fontSize: isSmallScreen ? 11 : 13,
+                                color: CustomColor.whiteSecondary,
+                                height: 1.4,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  if (date.isNotEmpty)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: CustomColor.bgLight1.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  if (date.isNotEmpty) ...[
+                    SizedBox(height: isSmallScreen ? 8 : 10),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isSmallScreen ? 8 : 10,
+                          vertical: isSmallScreen ? 4 : 5,
                         ),
-                      ),
-                      child: Text(
-                        date,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: CustomColor.whiteSecondary,
+                        decoration: BoxDecoration(
+                          color: CustomColor.bgLight1.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: CustomColor.blueSecondary.withOpacity(0.4),
+                          ),
+                        ),
+                        child: Text(
+                          date,
+                          style: TextStyle(
+                            fontSize: isSmallScreen ? 11 : 13,
+                            color: CustomColor.whiteSecondary,
+                          ),
                         ),
                       ),
                     ),
+                  ],
                 ],
               ),
             ),
@@ -666,6 +690,9 @@ class _CvSectionState extends State<CvSection>
     required String level,
     required int index,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 500 + (index * 80)),
@@ -677,15 +704,15 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(15 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index < 2 ? 12 : 0),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 18,
-                vertical: 16,
+              padding: EdgeInsets.symmetric(
+                horizontal: isSmallScreen ? 14 : isMobile ? 16 : 18,
+                vertical: isSmallScreen ? 12 : 16,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
                 border: Border.all(
-                  color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  color: CustomColor.blueSecondary.withOpacity(0.4),
                 ),
               ),
               child: Row(
@@ -694,45 +721,48 @@ class _CvSectionState extends State<CvSection>
                   Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(8),
+                        padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
                         decoration: BoxDecoration(
-                          color: CustomColor.yellowPrimary.withOpacity(0.2),
+                          color: CustomColor.bluePrimary.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.language,
-                          size: 20,
-                          color: CustomColor.yellowPrimary,
+                          size: isSmallScreen ? 18 : 20,
+                          color: CustomColor.bluePrimary,
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      SizedBox(width: isSmallScreen ? 10 : 12),
                       Text(
                         language,
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 14 : 16,
                           fontWeight: FontWeight.w600,
                           color: CustomColor.whitePrimary,
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: CustomColor.bgLight1.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  Flexible(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 8 : 12,
+                        vertical: isSmallScreen ? 5 : 6,
                       ),
-                    ),
-                    child: Text(
-                      level,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: CustomColor.whiteSecondary,
+                      decoration: BoxDecoration(
+                        color: CustomColor.bgLight1.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: CustomColor.blueSecondary.withOpacity(0.4),
+                        ),
+                      ),
+                      child: Text(
+                        level,
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 11 : 13,
+                          color: CustomColor.whiteSecondary,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
@@ -749,6 +779,9 @@ class _CvSectionState extends State<CvSection>
     required String title,
     required List<String> skills,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+    final isMobile = screenWidth < 600;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: const Duration(milliseconds: 800),
@@ -759,13 +792,13 @@ class _CvSectionState extends State<CvSection>
           child: Transform.translate(
             offset: Offset(0, 20 * (1 - value)),
             child: Container(
-              margin: const EdgeInsets.only(bottom: 16),
-              padding: const EdgeInsets.all(20),
+              margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : 16),
+              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
                 border: Border.all(
-                  color: CustomColor.yellowSecondary.withOpacity(0.4),
+                  color: CustomColor.blueSecondary.withOpacity(0.4),
                 ),
               ),
               child: Column(
@@ -773,16 +806,16 @@ class _CvSectionState extends State<CvSection>
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 17,
+                    style: TextStyle(
+                      fontSize: isSmallScreen ? 15 : 17,
                       fontWeight: FontWeight.w700,
-                      color: CustomColor.yellowPrimary,
+                      color: CustomColor.bluePrimary,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: isSmallScreen ? 12 : 16),
                   Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
+                    spacing: isSmallScreen ? 8 : 10,
+                    runSpacing: isSmallScreen ? 8 : 10,
                     children: skills.asMap().entries.map((entry) {
                       final index = entry.key;
                       final skill = entry.value;
@@ -796,21 +829,21 @@ class _CvSectionState extends State<CvSection>
                             child: Opacity(
                               opacity: skillValue,
                               child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 14,
-                                  vertical: 8,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: isSmallScreen ? 12 : 14,
+                                  vertical: isSmallScreen ? 6 : 8,
                                 ),
                                 decoration: BoxDecoration(
                                   color: CustomColor.bgLight1.withOpacity(0.8),
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(
-                                    color: CustomColor.yellowSecondary.withOpacity(0.4),
+                                    color: CustomColor.blueSecondary.withOpacity(0.4),
                                   ),
                                 ),
                                 child: Text(
                                   skill,
-                                  style: const TextStyle(
-                                    fontSize: 13,
+                                  style: TextStyle(
+                                    fontSize: isSmallScreen ? 11 : 13,
                                     color: CustomColor.whiteSecondary,
                                   ),
                                 ),

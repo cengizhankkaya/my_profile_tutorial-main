@@ -16,6 +16,7 @@ import '../widgets/drawer_mobile.dart';
 import '../widgets/footer.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
+import '../widgets/animated_widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,21 +74,37 @@ class _HomePageState extends State<HomePage> {
               Container(
                 key: navbarKeys[1],
                 width: screenWidth,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                padding: EdgeInsets.fromLTRB(
+                  screenWidth < 400 ? 20 : 25, 
+                  20, 
+                  screenWidth < 400 ? 20 : 25, 
+                  60
+                ),
                 color: CustomColor.bgLight1,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // title
-                    const Text(
-                      "Neler yapabilirim",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: CustomColor.whitePrimary,
+                    SlideInAnimation(
+                      offset: const Offset(0, -0.2),
+                      child: ShaderMask(
+                        shaderCallback: (bounds) => LinearGradient(
+                          colors: [
+                            CustomColor.whitePrimary,
+                            CustomColor.bluePrimary,
+                          ],
+                        ).createShader(bounds),
+                        child: Text(
+                          "Neler yapabilirim",
+                          style: TextStyle(
+                            fontSize: screenWidth < 400 ? 20 : (screenWidth < 600 ? 22 : 24),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 50),
+                    SizedBox(height: screenWidth < 400 ? 30 : 50),
 
                     // platforms and skills
                     if (constraints.maxWidth >= kMedDesktopWidth)

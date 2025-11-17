@@ -24,7 +24,7 @@ class SiteLogo extends StatelessWidget {
               fontSize: 22,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline,
-              color: CustomColor.yellowSecondary,
+              color: CustomColor.blueSecondary,
             ),
           ),
         ),
