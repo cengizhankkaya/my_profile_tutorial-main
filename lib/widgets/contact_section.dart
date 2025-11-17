@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/size.dart';
 import 'package:my_portfolio/constants/sns_links.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/colors.dart';
 import 'custom_text_field.dart';
-import 'dart:js' as js;
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -85,47 +85,30 @@ class ContactSection extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               InkWell(
-                onTap: () {
-                  js.context.callMethod('open', [SnsLinks.github]);
-                },
+                onTap: () => _launchLink(SnsLinks.github),
                 child: Image.asset(
                   "assets/github.png",
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {
-                  js.context.callMethod('open', [SnsLinks.linkedIn]);
-                },
+                onTap: () => _launchLink(SnsLinks.linkedIn),
                 child: Image.asset(
                   "assets/linkedin.png",
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {
-                  js.context.callMethod('open', [SnsLinks.facebook]);
-                },
+                onTap: () => _launchLink(SnsLinks.medium),
                 child: Image.asset(
-                  "assets/facebook.png",
+                  "assets/medium.png",
                   width: 28,
                 ),
               ),
               InkWell(
-                onTap: () {
-                  js.context.callMethod('open', [SnsLinks.instagram]);
-                },
+                onTap: () => _launchLink(SnsLinks.instagram),
                 child: Image.asset(
                   "assets/instagram.png",
-                  width: 28,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  js.context.callMethod('open', [SnsLinks.telegram]);
-                },
-                child: Image.asset(
-                  "assets/telegram.png",
                   width: 28,
                 ),
               ),
@@ -134,6 +117,13 @@ class ContactSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _launchLink(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Row buildNameEmailFieldDesktop() {

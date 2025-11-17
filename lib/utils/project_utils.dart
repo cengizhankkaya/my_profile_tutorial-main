@@ -6,6 +6,7 @@ class ProjectUtils {
   final String? iosLink;
   final String? webLink;
   final List<String> screenshots;
+  final List<String> techStack;
   final double? galleryAspectRatio;
 
   ProjectUtils({
@@ -16,6 +17,7 @@ class ProjectUtils {
     this.iosLink,
     this.webLink,
     this.screenshots = const [],
+    this.techStack = const [],
     this.galleryAspectRatio,
   });
 }
@@ -44,6 +46,15 @@ const List<String> _abc123Screenshots = [
   'assets/abc123/unnamed-9.png',
 ];
 
+const List<String> _fweatherScreenshots = [
+  'assets/fweather/unnamed.png',
+  'assets/fweather/unnamed-1.png',
+  'assets/fweather/unnamed-4.png',
+  'assets/fweather/unnamed-5.png',
+  'assets/fweather/unnamed-6.png',
+  'assets/fweather/unnamed-7.png',
+];
+
 List<String> _screens(int startIndex, {int length = 3}) {
   return List.generate(length, (offset) {
     final index = (startIndex + offset) % _playStoreScreenshots.length;
@@ -64,6 +75,28 @@ List<ProjectUtils> hobbyProjectUtils = [
     androidLink:
         'https://play.google.com/store/apps/details?id=com.cngz.arya&pcampaignid=web_share',
     screenshots: _screens(0, length: 8),
+    techStack: const [
+      'Flutter',
+      'Provider',
+      'Firebase (auth/firestore/core)',
+      'REST (dio)',
+      'Auto Route',
+      'Easy Localization',
+      'Mobile Scanner (barcode/qrcode)',
+      'Image Picker (gallery/camera)',
+      'Lottie',
+      'Shimmer',
+      'Shared Preferences',
+      'MVVM Architecture',
+      'Clean Code',
+      'Clean Arch.',
+      'SOLID Principles',
+      'Dependency Injection',
+      'Unit Tests',
+      'Integration Tests',
+      'UI Tests',
+      'Performance Optimization',
+    ],
   ),
   ProjectUtils(
     image: 'assets/abc123/logo.png',
@@ -74,6 +107,45 @@ List<ProjectUtils> hobbyProjectUtils = [
         'https://play.google.com/store/apps/details?id=com.cengizhan.abc123',
     screenshots: _abc123Screenshots,
     galleryAspectRatio: 16 / 9,
+    techStack: const [
+  'Flutter',
+  'Provider (State Management)',
+  'TensorFlow Lite (ML Models)',
+  'Google Mobile Ads',
+  'Shared Preferences',
+  'Image Picker (gallery/camera)',
+  'Audio Players',
+  'Google Fonts',
+  'Flutter SVG',
+  'Path Provider',
+  'Image Processing (image package)',
+  'Signature/Scribble (Drawing)',
+  'URL Launcher',
+  'Feature-based Architecture',
+  'Singleton Pattern',
+  'Responsive Design (Screen Util)',
+  'Custom Localization System',
+  'Material Design',
+  'Canvas API (Drawing)',
+  'Image Rendering & Processing',
+  'ML Model Inference',
+]
+  ),
+  ProjectUtils(
+    image: 'assets/fweather/logo.png',
+    title: 'FWeather',
+    androidLink:
+        'https://play.google.com/store/apps/details?id=com.kaya.fweather&pcampaignid=web_share',
+    subtitle:
+        'FWeather, anlık konum bilgisiyle çalışarak size sade bir arayüz üzerinden güncel hava durumu, kısa vadeli tahminler ve sıcaklık uyarıları sunar. Outdoor planlamalarınızı kolaylaştırmak için tasarlanan uygulama aynı zamanda favori şehirlerinizi kaydetmenize de olanak tanır.',
+    screenshots: _fweatherScreenshots,
+    galleryAspectRatio: 9 / 16,
+    techStack: const [
+      'Flutter',
+      'Riverpod',
+      'Weather API',
+      'Clean Arch.',
+    ],
   ),
 
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/colors.dart';
 import 'package:my_portfolio/constants/sns_links.dart';
 import 'package:my_portfolio/widgets/contact_section.dart';
+import 'package:my_portfolio/widgets/cv_section.dart';
 import 'package:my_portfolio/widgets/main_desktop.dart';
 import 'package:my_portfolio/widgets/main_mobile.dart';
 import 'package:my_portfolio/widgets/projects_section.dart';
@@ -26,7 +27,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final scrollController = ScrollController();
-  final List<GlobalKey> navbarKeys = List.generate(4, (index) => GlobalKey());
+  final List<GlobalKey> navbarKeys = List.generate(5, (index) => GlobalKey());
 
   @override
   Widget build(BuildContext context) {
@@ -105,9 +106,16 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 30),
 
+              // CV
+              CvSection(
+                key: navbarKeys[3],
+              ),
+
+              const SizedBox(height: 30),
+
               // CONTACT
               ContactSection(
-                key: navbarKeys[3],
+                key: navbarKeys[4],
               ),
               const SizedBox(height: 30),
 
@@ -121,7 +129,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void scrollToSection(int navIndex) {
-    if (navIndex == 4) {
+    if (navIndex == 5) {
       // open a blog page
       js.context.callMethod('open', [SnsLinks.blog]);
       return;

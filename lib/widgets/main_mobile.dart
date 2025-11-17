@@ -28,8 +28,8 @@ class MainMobile extends StatelessWidget {
           ShaderMask(
             shaderCallback: (bounds) {
               return LinearGradient(colors: [
-                CustomColor.scaffoldBg.withOpacity(0.6),
-                CustomColor.scaffoldBg.withOpacity(0.6),
+                CustomColor.scaffoldBg.withValues(alpha: 0.6),
+                CustomColor.scaffoldBg.withValues(alpha: 0.6),
               ]).createShader(bounds);
             },
             blendMode: BlendMode.srcATop,
@@ -41,7 +41,7 @@ class MainMobile extends StatelessWidget {
           const SizedBox(height: 30),
           // intro message
           const Text(
-            "Merhaba,\nBen Shohruh AK\nFlutter Geliştiricisiyim",
+            "Merhaba,\nCengizhan Kaya\nFlutter Geliştiricisiyim",
             style: TextStyle(
               fontSize: 24,
               height: 1.5,

@@ -102,6 +102,47 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                         color: CustomColor.whiteSecondary,
                       ),
                     ),
+                    if (project.techStack.isNotEmpty) ...[
+                      const SizedBox(height: 18),
+                      const Text(
+                        "Teknolojiler & State Management",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: CustomColor.whitePrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: project.techStack
+                            .map(
+                              (tech) => Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 6),
+                                decoration: BoxDecoration(
+                                  color: CustomColor.bgLight1.withOpacity(0.8),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color:
+                                        CustomColor.yellowSecondary.withOpacity(
+                                      0.4,
+                                    ),
+                                  ),
+                                ),
+                                child: Text(
+                                  tech,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: CustomColor.whiteSecondary,
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ],
                     const SizedBox(height: 20),
                     Wrap(
                       spacing: 12,
