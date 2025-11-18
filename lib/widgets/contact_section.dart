@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/constants/size.dart';
 import 'package:my_portfolio/constants/sns_links.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/colors.dart';
 import 'animated_widgets.dart';
-import 'custom_text_field.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -46,78 +44,67 @@ class ContactSection extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 50),
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 700,
-              maxHeight: 100,
-            ),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth >= kMinDesktopWidth) {
-                  return buildNameEmailFieldDesktop();
-                }
-
-                // else
-                return buildNameEmailFieldMobile();
-              },
-            ),
-          ),
-          const SizedBox(height: 15),
-          // message
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 700,
-            ),
-            child: CustomTextField(
-              hintText: "Mesajınız",
-              maxLines: 16,
-            ),
-          ),
-          const SizedBox(height: 20),
-          // send button
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 700,
-            ),
-            child: SlideInAnimation(
-              offset: const Offset(0, 0.2),
-              delay: const Duration(milliseconds: 300),
-              child: HoverAnimation(
+          const SizedBox(height: 40),
+          SlideInAnimation(
+            offset: const Offset(0, 0.2),
+            delay: const Duration(milliseconds: 200),
+            child: HoverAnimation(
+              scale: 1.02,
+              child: InkWell(
+                onTap: _launchEmail,
+                borderRadius: BorderRadius.circular(16),
                 child: Container(
-                  width: double.maxFinite,
+                  constraints: const BoxConstraints(maxWidth: 520),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isSmallScreen ? 18 : 26,
+                    vertical: isSmallScreen ? 22 : 28,
+                  ),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        CustomColor.bluePrimary,
-                        CustomColor.blueSecondary,
+                        CustomColor.bluePrimary.withOpacity(0.2),
+                        CustomColor.blueSecondary.withOpacity(0.2),
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: CustomColor.bluePrimary.withOpacity(0.4),
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: CustomColor.bluePrimary.withOpacity(0.4),
-                        blurRadius: 15,
+                        color: CustomColor.bluePrimary.withOpacity(0.25),
+                        blurRadius: 20,
                         spreadRadius: 2,
                       ),
                     ],
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.email_outlined,
+                        color: CustomColor.bluePrimary,
+                        size: isSmallScreen ? 32 : 38,
                       ),
-                    ),
-                    child: const Text(
-                      "Gönder",
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      const SizedBox(height: 16),
+                      SelectableText(
+                        SnsLinks.email,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 18 : 22,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Bu adrese e-posta göndererek dilediğiniz zaman iletişime geçebilirsiniz.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: isSmallScreen ? 14 : 16,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -218,50 +205,14 @@ class ContactSection extends StatelessWidget {
     );
   }
 
+  Future<void> _launchEmail() async {
+    await _launchLink('mailto:${SnsLinks.email}');
+  }
+
   Future<void> _launchLink(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
-  }
-
-  Row buildNameEmailFieldDesktop() {
-    return Row(
-      children: [
-        // name
-        Flexible(
-          child: CustomTextField(
-            hintText: "Adınız",
-          ),
-        ),
-        const SizedBox(width: 15),
-        // email
-        Flexible(
-          child: CustomTextField(
-            hintText: "E-posta adresiniz",
-          ),
-        ),
-      ],
-    );
-  }
-
-  Column buildNameEmailFieldMobile() {
-    return Column(
-      children: [
-        // name
-        Flexible(
-          child: CustomTextField(
-            hintText: "Adınız",
-          ),
-        ),
-        const SizedBox(height: 15),
-        // email
-        Flexible(
-          child: CustomTextField(
-            hintText: "E-posta adresiniz",
-          ),
-        ),
-      ],
-    );
   }
 }

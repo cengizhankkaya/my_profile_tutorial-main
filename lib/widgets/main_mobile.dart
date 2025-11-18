@@ -4,7 +4,12 @@ import '../constants/colors.dart';
 import 'animated_widgets.dart';
 
 class MainMobile extends StatelessWidget {
-  const MainMobile({super.key});
+  const MainMobile({
+    required this.onContactTap,
+    super.key,
+  });
+
+  final VoidCallback onContactTap;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +101,7 @@ class MainMobile extends StatelessWidget {
                   ],
                 ),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: onContactTap,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     shadowColor: Colors.transparent,
