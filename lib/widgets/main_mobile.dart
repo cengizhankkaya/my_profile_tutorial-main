@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: deprecated_member_use
+import 'dart:js' as js;
 
 import '../constants/colors.dart';
+import '../constants/sns_links.dart';
 import 'animated_widgets.dart';
 
 class MainMobile extends StatelessWidget {
@@ -113,6 +116,52 @@ class MainMobile extends StatelessWidget {
                     "İletişime geç",
                     style: TextStyle(
                       color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: isSmallScreen ? 15 : 15),
+          // github btn with animation
+          SlideInAnimation(
+            offset: const Offset(0, 0.2),
+            delay: const Duration(milliseconds: 700),
+            child: HoverAnimation(
+              child: Container(
+                width: isSmallScreen ? double.infinity : 190.0,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xFF4CAF50),
+                      Color(0xFF2E7D32),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF4CAF50).withOpacity(0.4),
+                      blurRadius: 15,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    js.context.callMethod('open', [SnsLinks.github]);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    "GitHub",
+                    style: TextStyle(
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
