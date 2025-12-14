@@ -53,6 +53,70 @@ flutter build web
 
 Build edilen dosyalar `build/web` klasöründe olacaktır.
 
+## 🍎 Safari'de Çalıştırma
+
+### Yöntem 1: Development Modda (Hot Reload ile)
+
+1. Web sunucusu olarak çalıştırın:
+```bash
+flutter run -d web-server
+```
+
+2. Terminal'de görünen URL'i kopyalayın (genellikle `http://localhost:xxxxx`)
+
+3. Safari'yi açın ve URL'i adres çubuğuna yapıştırın
+
+**Not:** Bu yöntemle hot reload özelliği çalışır, kod değişiklikleriniz anında yansır.
+
+### Yöntem 2: Production Build ile
+
+1. Web için build alın:
+```bash
+flutter build web
+```
+
+2. Build edilen dosyaları serve edin. Birkaç seçenek:
+
+**Python ile:**
+```bash
+cd build/web
+python3 -m http.server 8000
+```
+
+**Node.js ile (http-server kullanarak):**
+```bash
+npm install -g http-server
+cd build/web
+http-server -p 8000
+```
+
+**Flutter'ın kendi sunucusu ile:**
+```bash
+flutter run -d web-server --release
+```
+
+3. Safari'de `http://localhost:8000` adresini açın
+
+### Yöntem 3: Doğrudan Safari'de Açma
+
+Flutter, varsayılan tarayıcıyı kullanarak çalıştırabilirsiniz:
+
+```bash
+# Safari'yi varsayılan tarayıcı yapın (macOS Ayarlar > Genel > Varsayılan Web Tarayıcısı)
+flutter run -d chrome --web-browser-flag="--disable-web-security"
+```
+
+Veya doğrudan Safari'yi hedefleyin:
+```bash
+open -a Safari http://localhost:xxxxx
+```
+
+### Safari'de Debugging
+
+Safari'de geliştirici araçlarını açmak için:
+1. Safari > Ayarlar > Gelişmiş > "Menü çubuğunda Geliştir menüsünü göster" seçeneğini işaretleyin
+2. Geliştir > Web Inspector'ı açın
+
 ## 📱 Platform Desteği
 
 - ✅ Web
