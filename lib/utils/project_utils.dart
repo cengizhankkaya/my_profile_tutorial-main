@@ -68,6 +68,42 @@ List<ProjectUtils> workProjectUtils = [];
 // HOBBY PROJECTS
 List<ProjectUtils> hobbyProjectUtils = [
   ProjectUtils(
+    image: 'assets/AnimeAppStoreMağzaTR/logo.jpg',
+    title: 'AI AnimeCreator',
+    subtitle:
+        'AI Anime Creator, anime esintili kısa hikâyeleri yapay zekâ ile anında oluşturmanı sağlar. Fikirlerini metne dök, hikâyenin yapay zekâ tarafından devam ettirilmesine izin ver, oluşturduklarını kaydet, favorilerine ekle ve istediğin zaman tekrar geri dön.',
+    androidLink:
+        'https://play.google.com/store/apps/details?id=com.cengizhan.animeai',
+    screenshots: [
+      'assets/AnimeAppStoreMağzaTR/1.png',
+      'assets/AnimeAppStoreMağzaTR/2.png',
+      'assets/AnimeAppStoreMağzaTR/3.png',
+      'assets/AnimeAppStoreMağzaTR/4.png',
+      'assets/AnimeAppStoreMağzaTR/5.png',
+      'assets/AnimeAppStoreMağzaTR/6.png',
+      'assets/AnimeAppStoreMağzaTR/7.png',
+    ],
+    techStack: const [
+      'Flutter',
+      'Dart',
+      'Firebase (Auth, Firestore, Functions, AI)',
+      'Node.js (Cloud Functions)',
+      'Flutter Bloc (Cubit)',
+      'Auto Route',
+      'GetIt (DI)',
+      'Equatable',
+      'Material Design',
+      'Rive (Animation)',
+      'Lottie',
+      'Easy Localization',
+      'In-App Purchase',
+      'Share Plus',
+      'Flutter TTS',
+      'Google Fonts',
+      'Flutter SVG',
+    ],
+  ),
+  ProjectUtils(
     image: _playStoreScreenshots[0],
     title: 'HealthShop',
     subtitle:
@@ -99,38 +135,37 @@ List<ProjectUtils> hobbyProjectUtils = [
     ],
   ),
   ProjectUtils(
-    image: 'assets/abc123/logo.png',
-    title: 'Abc123',
-    subtitle:
-        'Abc123, çocukların hem eğlenmelerini hem de öğrenmelerini sağlayan bir çizim uygulamasıdır. Bu uygulama, çocukların yaratıcılıklarını ve sanatsal yeteneklerini geliştirmelerine yardımcı olur. Çocuklarınızın eğlenirken öğrenmelerini sağlayın ve onların yaratıcılığını serbest bırakın!',
-    androidLink:
-        'https://play.google.com/store/apps/details?id=com.cengizhan.abc123',
-    screenshots: _abc123Screenshots,
-    galleryAspectRatio: 16 / 9,
-    techStack: const [
-  'Flutter',
-  'Provider (State Management)',
-  'TensorFlow Lite (ML Models)',
-  'Google Mobile Ads',
-  'Shared Preferences',
-  'Image Picker (gallery/camera)',
-  'Audio Players',
-  'Google Fonts',
-  'Flutter SVG',
-  'Path Provider',
-  'Image Processing (image package)',
-  'Signature/Scribble (Drawing)',
-  'URL Launcher',
-  'Feature-based Architecture',
-  'Singleton Pattern',
-  'Responsive Design (Screen Util)',
-  'Custom Localization System',
-  'Material Design',
-  'Canvas API (Drawing)',
-  'Image Rendering & Processing',
-  'ML Model Inference',
-]
-  ),
+      image: 'assets/abc123/logo.png',
+      title: 'Abc123',
+      subtitle:
+          'Abc123, çocukların hem eğlenmelerini hem de öğrenmelerini sağlayan bir çizim uygulamasıdır. Bu uygulama, çocukların yaratıcılıklarını ve sanatsal yeteneklerini geliştirmelerine yardımcı olur. Çocuklarınızın eğlenirken öğrenmelerini sağlayın ve onların yaratıcılığını serbest bırakın!',
+      androidLink:
+          'https://play.google.com/store/apps/details?id=com.cengizhan.abc123',
+      screenshots: _abc123Screenshots,
+      galleryAspectRatio: 16 / 9,
+      techStack: const [
+        'Flutter',
+        'Provider (State Management)',
+        'TensorFlow Lite (ML Models)',
+        'Google Mobile Ads',
+        'Shared Preferences',
+        'Image Picker (gallery/camera)',
+        'Audio Players',
+        'Google Fonts',
+        'Flutter SVG',
+        'Path Provider',
+        'Image Processing (image package)',
+        'Signature/Scribble (Drawing)',
+        'URL Launcher',
+        'Feature-based Architecture',
+        'Singleton Pattern',
+        'Responsive Design (Screen Util)',
+        'Custom Localization System',
+        'Material Design',
+        'Canvas API (Drawing)',
+        'Image Rendering & Processing',
+        'ML Model Inference',
+      ]),
   ProjectUtils(
     image: 'assets/fweather/logo.png',
     title: 'FWeather',
@@ -147,7 +182,4 @@ List<ProjectUtils> hobbyProjectUtils = [
       'Clean Arch.',
     ],
   ),
-
-
 ];
-

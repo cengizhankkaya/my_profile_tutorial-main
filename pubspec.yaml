@@ -64,6 +64,7 @@ flutter:
     - assets/groceryshopping/
     - assets/abc123/
     - assets/fweather/
+    - assets/AnimeAppStoreMağzaTR/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
