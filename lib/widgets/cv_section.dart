@@ -62,11 +62,7 @@ class _CvSectionState extends State<CvSection>
         child: Container(
           width: screenWidth,
           padding: EdgeInsets.fromLTRB(
-            isSmallScreen ? 20 : 25, 
-            20, 
-            isSmallScreen ? 20 : 25, 
-            60
-          ),
+              isSmallScreen ? 20 : 25, 20, isSmallScreen ? 20 : 25, 60),
           decoration: BoxDecoration(
             color: CustomColor.bgLight1,
             gradient: LinearGradient(
@@ -106,7 +102,11 @@ class _CvSectionState extends State<CvSection>
                         Text(
                           "Özgeçmiş",
                           style: TextStyle(
-                            fontSize: isSmallScreen ? 22 : isMobile ? 24 : 28,
+                            fontSize: isSmallScreen
+                                ? 22
+                                : isMobile
+                                    ? 24
+                                    : 28,
                             fontWeight: FontWeight.bold,
                             color: CustomColor.whitePrimary,
                             letterSpacing: isSmallScreen ? 0.8 : 1.2,
@@ -115,155 +115,170 @@ class _CvSectionState extends State<CvSection>
                       ],
                     ),
                     SizedBox(height: isSmallScreen ? 30 : 50),
-                // Eğitim Bölümü
-                _buildSection(
-                  title: "Eğitim",
-                  icon: Icons.school,
-                  delay: 100,
-                  children: [
-                    _buildEducationItem(
-                      degree: "Bilgisayar Mühendisliği",
-                      school: "Nevşehir Hacı Bektaş Veli Üniversitesi",
-                      period: "2021 - 2025",
-                      description: "Lisans",
-                      index: 0,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildEducationItem(
-                      degree: "Cumhuriyet Mesleki ve Teknik Anadolu Lisesi",
-                      school: "",
-                      period: "2015 - 2019",
-                      description: "",
-                      index: 1,
-                    ),
-                  ],
-                ),
-                
-                SizedBox(height: isSmallScreen ? 30 : 40),
-                
-                // İş Deneyimi Bölümü
-                _buildSection(
-                  title: "İş Deneyimi",
-                  icon: Icons.work,
-                  delay: 200,
-                  children: [
-                    _buildExperienceItem(
-                      position: "AI Stajyer",
-                      company: "Ceka Yazılım Ar-Ge Mühendislik ve Bilgisayar Elektroniği Ltd. ŞF.",
-                      period: "07/07/2025 – 18/08/2025",
-                      description: "Yapay Zekâ ekibinde staj sırasında makine öğrenimi modelleri geliştirdim, veri ön işleme ve model eğitim süreçlerine katıldım; mobil uygulamalar için TensorFlow entegrasyonu yaptım.",
-                      isDesktop: isDesktop,
-                      index: 0,
-                    ),
-                    SizedBox(height: isSmallScreen ? 16 : 20),
-                    _buildExperienceItem(
-                      position: "Mobil Uygulama Geliştirme Stajyeri (Flutter)",
-                      company: "Ege Serbest Bölge Kuruluş ve İşletme A.Ş",
-                      period: "08/07/2024 – 19/08/2024",
-                      description: "Bir proximity kart okuyucusunu MSSQL veritabanı ile entegre eden bir backend API geliştirdim. ASP.NET Core Web API ve Entity Framework Core kullanılarak inşa edildi. API, etkinlik yönetimi fonksiyonları sağlıyor. Hem Flutter hem de React uygulamalarını destekleyecek şekilde tasarlandı. Flutter geliştirmede mimari tasarım desenleri kullanıldı. Figma prototipleri baz alınarak UI/UX tasarımları uygulandı.",
-                      isDesktop: isDesktop,
-                      index: 1,
-                    ),
-                  ],
-                ),
-                
-                SizedBox(height: isSmallScreen ? 30 : 40),
-                
-                // Sertifikalar / Etkinlikler Bölümü
-                _buildSection(
-                  title: "Sosyal / Akademik Etkinlikler",
-                  icon: Icons.verified,
-                  delay: 300,
-                  children: [
-                    _buildCertificateItem(
-                      name: "Teknofest 2022 Roket Yarışması – Orta İrtifa Kategorisi",
-                      issuer: "6.'lık",
-                      date: "2022",
-                      index: 0,
-                    ),
-                    SizedBox(height: isSmallScreen ? 12 : 15),
-                    _buildCertificateItem(
-                      name: "SQL Öğrenme",
-                      issuer: "Ömer Çolakoğlu Udemy Kursu",
-                      date: "",
-                      index: 1,
-                    ),
-                    SizedBox(height: isSmallScreen ? 12 : 15),
-                    _buildCertificateItem(
-                      name: "MySQL Eğitimi",
-                      issuer: "Microsoft MVP – Ömer Çolakoğlu",
-                      date: "",
-                      index: 2,
-                    ),
-                  ],
-                ),
-                
-                SizedBox(height: isSmallScreen ? 30 : 40),
-                
-                // Diller Bölümü
-                _buildSection(
-                  title: "Diller",
-                  icon: Icons.language,
-                  delay: 400,
-                  children: [
-                    _buildLanguageItem(
-                      language: "Türkçe",
-                      level: "Ana Dil",
-                      index: 0,
-                    ),
-                    SizedBox(height: isSmallScreen ? 12 : 15),
-                    _buildLanguageItem(
-                      language: "İngilizce",
-                      level: "Başlangıç Seviyesi",
-                      index: 1,
-                    ),
-                    SizedBox(height: isSmallScreen ? 12 : 15),
-                    _buildLanguageItem(
-                      language: "Almanca",
-                      level: "Başlangıç Seviyesi",
-                      index: 2,
-                    ),
-                  ],
-                ),
-                
-                SizedBox(height: isSmallScreen ? 30 : 40),
-                
-                // Yetenekler Bölümü
-                _buildSection(
-                  title: "Yetenekler",
-                  icon: Icons.code,
-                  delay: 500,
-                  children: [
-                    _buildSkillsCategory(
-                      title: "Teknik Beceriler",
-                      skills: [
-                        "StateManagement (Provider, Bloc)",
-                        "Flutter, Dart",
-                        "Testing (Unit, Widget, Integration, Patrol)",
-                        "Firebase",
-                        "MVVM ve Temiz Mimari",
-                        "Duyarlı (Responsive) Arayüz Tasarımı",
-                        "Git & GitHub",
-                        "Python",
-                        "TensorFlow Lite",
-                        "SQL",
-                        "Swift (Beginner)",
+                    // Eğitim Bölümü
+                    _buildSection(
+                      title: "Eğitim",
+                      icon: Icons.school,
+                      delay: 100,
+                      children: [
+                        _buildEducationItem(
+                          degree: "Bilgisayar Mühendisliği",
+                          school: "Nevşehir Hacı Bektaş Veli Üniversitesi",
+                          period: "2021 - 2025",
+                          description: "Lisans",
+                          index: 0,
+                        ),
+                        const SizedBox(height: 20),
+                        _buildEducationItem(
+                          degree: "Cumhuriyet Mesleki ve Teknik Anadolu Lisesi",
+                          school: "",
+                          period: "2015 - 2019",
+                          description: "",
+                          index: 1,
+                        ),
                       ],
                     ),
-                    SizedBox(height: isSmallScreen ? 16 : 20),
-                    _buildSkillsCategory(
-                      title: "Yazılımlar ve Araçlar",
-                      skills: [
-                        "Figma",
+
+                    SizedBox(height: isSmallScreen ? 30 : 40),
+
+                    // İş Deneyimi Bölümü
+                    _buildSection(
+                      title: "İş Deneyimi",
+                      icon: Icons.work,
+                      delay: 200,
+                      children: [
+                        _buildExperienceItem(
+                          position: "Flutter Geliştirici",
+                          company: "PrintHere",
+                          period: "10/09/2025 – Halen",
+                          description:
+                              "Flutter & Dart kullanarak, kullanıcıların 7/24 baskı otomatlarından çıktı almasını sağlayan uçtan uca mobil uygulama geliştirme sürecinde yer alıyorum.",
+                          isDesktop: isDesktop,
+                          index: 0,
+                        ),
+                        SizedBox(height: isSmallScreen ? 16 : 20),
+                        _buildExperienceItem(
+                          position: "AI Stajyer",
+                          company:
+                              "Ceka Yazılım Ar-Ge Mühendislik ve Bilgisayar Elektroniği Ltd. ŞF.",
+                          period: "07/07/2025 – 18/08/2025",
+                          description:
+                              "Yapay Zekâ ekibinde staj sırasında makine öğrenimi modelleri geliştirdim, veri ön işleme ve model eğitim süreçlerine katıldım; mobil uygulamalar için TensorFlow entegrasyonu yaptım.",
+                          isDesktop: isDesktop,
+                          index: 1,
+                        ),
+                        SizedBox(height: isSmallScreen ? 16 : 20),
+                        _buildExperienceItem(
+                          position:
+                              "Mobil Uygulama Geliştirme Stajyeri (Flutter)",
+                          company: "Ege Serbest Bölge Kuruluş ve İşletme A.Ş",
+                          period: "08/07/2024 – 19/08/2024",
+                          description:
+                              "Bir proximity kart okuyucusunu MSSQL veritabanı ile entegre eden bir backend API geliştirdim. ASP.NET Core Web API ve Entity Framework Core kullanılarak inşa edildi. API, etkinlik yönetimi fonksiyonları sağlıyor. Hem Flutter hem de React uygulamalarını destekleyecek şekilde tasarlandı. Flutter geliştirmede mimari tasarım desenleri kullanıldı. Figma prototipleri baz alınarak UI/UX tasarımları uygulandı.",
+                          isDesktop: isDesktop,
+                          index: 2,
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: isSmallScreen ? 30 : 40),
+
+                    // Sertifikalar / Etkinlikler Bölümü
+                    _buildSection(
+                      title: "Sosyal / Akademik Etkinlikler",
+                      icon: Icons.verified,
+                      delay: 300,
+                      children: [
+                        _buildCertificateItem(
+                          name:
+                              "Teknofest 2022 Roket Yarışması – Orta İrtifa Kategorisi",
+                          issuer: "6.'lık",
+                          date: "2022",
+                          index: 0,
+                        ),
+                        SizedBox(height: isSmallScreen ? 12 : 15),
+                        _buildCertificateItem(
+                          name: "SQL Öğrenme",
+                          issuer: "Ömer Çolakoğlu Udemy Kursu",
+                          date: "",
+                          index: 1,
+                        ),
+                        SizedBox(height: isSmallScreen ? 12 : 15),
+                        _buildCertificateItem(
+                          name: "MySQL Eğitimi",
+                          issuer: "Microsoft MVP – Ömer Çolakoğlu",
+                          date: "",
+                          index: 2,
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: isSmallScreen ? 30 : 40),
+
+                    // Diller Bölümü
+                    _buildSection(
+                      title: "Diller",
+                      icon: Icons.language,
+                      delay: 400,
+                      children: [
+                        _buildLanguageItem(
+                          language: "Türkçe",
+                          level: "Ana Dil",
+                          index: 0,
+                        ),
+                        SizedBox(height: isSmallScreen ? 12 : 15),
+                        _buildLanguageItem(
+                          language: "İngilizce",
+                          level: "Başlangıç Seviyesi",
+                          index: 1,
+                        ),
+                        SizedBox(height: isSmallScreen ? 12 : 15),
+                        _buildLanguageItem(
+                          language: "Almanca",
+                          level: "Başlangıç Seviyesi",
+                          index: 2,
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: isSmallScreen ? 30 : 40),
+
+                    // Yetenekler Bölümü
+                    _buildSection(
+                      title: "Yetenekler",
+                      icon: Icons.code,
+                      delay: 500,
+                      children: [
+                        _buildSkillsCategory(
+                          title: "Teknik Beceriler",
+                          skills: [
+                            "StateManagement (Provider, Bloc)",
+                            "Flutter, Dart",
+                            "Testing (Unit, Widget, Integration, Patrol)",
+                            "Firebase",
+                            "MVVM ve Temiz Mimari",
+                            "Duyarlı (Responsive) Arayüz Tasarımı",
+                            "Git & GitHub",
+                            "Python",
+                            "TensorFlow Lite",
+                            "SQL",
+                            "Swift (Beginner)",
+                          ],
+                        ),
+                        SizedBox(height: isSmallScreen ? 16 : 20),
+                        _buildSkillsCategory(
+                          title: "Yazılımlar ve Araçlar",
+                          skills: [
+                            "Figma",
+                          ],
+                        ),
                       ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
         ),
       ),
     );
@@ -290,7 +305,11 @@ class _CvSectionState extends State<CvSection>
             child: Container(
               width: double.infinity,
               margin: EdgeInsets.symmetric(vertical: isSmallScreen ? 12 : 16),
-              padding: EdgeInsets.all(isSmallScreen ? 16 : isMobile ? 20 : 24),
+              padding: EdgeInsets.all(isSmallScreen
+                  ? 16
+                  : isMobile
+                      ? 20
+                      : 24),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
                 color: CustomColor.bgLight2,
@@ -320,7 +339,11 @@ class _CvSectionState extends State<CvSection>
                         child: Icon(
                           icon,
                           color: CustomColor.bluePrimary,
-                          size: isSmallScreen ? 22 : isMobile ? 24 : 28,
+                          size: isSmallScreen
+                              ? 22
+                              : isMobile
+                                  ? 24
+                                  : 28,
                         ),
                       ),
                       SizedBox(width: isSmallScreen ? 12 : 16),
@@ -328,7 +351,11 @@ class _CvSectionState extends State<CvSection>
                         child: Text(
                           title,
                           style: TextStyle(
-                            fontSize: isSmallScreen ? 18 : isMobile ? 20 : 24,
+                            fontSize: isSmallScreen
+                                ? 18
+                                : isMobile
+                                    ? 20
+                                    : 24,
                             fontWeight: FontWeight.w700,
                             color: CustomColor.whitePrimary,
                             letterSpacing: isSmallScreen ? 0.3 : 0.5,
@@ -369,7 +396,11 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(20 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index == 0 ? 16 : 0),
-              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
+              padding: EdgeInsets.all(isSmallScreen
+                  ? 14
+                  : isMobile
+                      ? 16
+                      : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
@@ -388,7 +419,11 @@ class _CvSectionState extends State<CvSection>
                         child: Text(
                           degree,
                           style: TextStyle(
-                            fontSize: isSmallScreen ? 16 : isMobile ? 17 : 18,
+                            fontSize: isSmallScreen
+                                ? 16
+                                : isMobile
+                                    ? 17
+                                    : 18,
                             fontWeight: FontWeight.w700,
                             color: CustomColor.whitePrimary,
                           ),
@@ -484,7 +519,11 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(20 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index == 0 ? 16 : 0),
-              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
+              padding: EdgeInsets.all(isSmallScreen
+                  ? 14
+                  : isMobile
+                      ? 16
+                      : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
@@ -499,7 +538,11 @@ class _CvSectionState extends State<CvSection>
                   Text(
                     position,
                     style: TextStyle(
-                      fontSize: isSmallScreen ? 16 : isMobile ? 17 : 18,
+                      fontSize: isSmallScreen
+                          ? 16
+                          : isMobile
+                              ? 17
+                              : 18,
                       fontWeight: FontWeight.w700,
                       color: CustomColor.whitePrimary,
                     ),
@@ -598,7 +641,11 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(15 * (1 - value), 0),
             child: Container(
               margin: EdgeInsets.only(bottom: index < 2 ? 12 : 0),
-              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 18),
+              padding: EdgeInsets.all(isSmallScreen
+                  ? 14
+                  : isMobile
+                      ? 16
+                      : 18),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
@@ -705,7 +752,11 @@ class _CvSectionState extends State<CvSection>
             child: Container(
               margin: EdgeInsets.only(bottom: index < 2 ? 12 : 0),
               padding: EdgeInsets.symmetric(
-                horizontal: isSmallScreen ? 14 : isMobile ? 16 : 18,
+                horizontal: isSmallScreen
+                    ? 14
+                    : isMobile
+                        ? 16
+                        : 18,
                 vertical: isSmallScreen ? 12 : 16,
               ),
               decoration: BoxDecoration(
@@ -793,7 +844,11 @@ class _CvSectionState extends State<CvSection>
             offset: Offset(0, 20 * (1 - value)),
             child: Container(
               margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : 16),
-              padding: EdgeInsets.all(isSmallScreen ? 14 : isMobile ? 16 : 20),
+              padding: EdgeInsets.all(isSmallScreen
+                  ? 14
+                  : isMobile
+                      ? 16
+                      : 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: CustomColor.bgLight1,
@@ -837,7 +892,8 @@ class _CvSectionState extends State<CvSection>
                                   color: CustomColor.bgLight1.withOpacity(0.8),
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(
-                                    color: CustomColor.blueSecondary.withOpacity(0.4),
+                                    color: CustomColor.blueSecondary
+                                        .withOpacity(0.4),
                                   ),
                                 ),
                                 child: Text(
@@ -863,4 +919,3 @@ class _CvSectionState extends State<CvSection>
     );
   }
 }
-
