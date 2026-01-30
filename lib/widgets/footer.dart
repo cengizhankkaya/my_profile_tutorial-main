@@ -11,12 +11,16 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20),
       width: double.maxFinite,
       alignment: Alignment.center,
-      child: const Text(
-        "Cengizhan Kaya tarafından Flutter 3.38.1 ile geliştirildi",
-        style: TextStyle(
-          fontWeight: FontWeight.w400,
-          color: CustomColor.whiteSecondary,
-        ),
+      child: Column(
+        children: [
+          const Text(
+            "Cengizhan Kaya tarafından Flutter 3.38.1 ile geliştirildi",
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: CustomColor.whiteSecondary,
+            ),
+          ),
+        ],
       ),
     );
   }
