@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class _EmotiColors {
   static const Color backgrounddark = Color(0xFF1A1D21);
@@ -51,7 +50,7 @@ class EmotiPrivacyPolicyPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     'Emoti',
-                    style: GoogleFonts.righteous(
+                    style: TextStyle(
                       color: _EmotiColors.skyBlue,
                       fontWeight: FontWeight.w400,
                       fontSize: 22,
