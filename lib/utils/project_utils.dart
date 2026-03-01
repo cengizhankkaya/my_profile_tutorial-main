@@ -55,6 +55,16 @@ const List<String> _fweatherScreenshots = [
   'assets/fweather/unnamed-7.png',
 ];
 
+const List<String> _emotiTrScreenshots = [
+  'assets/EmotiTR/logo.jpg',
+  'assets/EmotiTR/1.png',
+  'assets/EmotiTR/2.png',
+  'assets/EmotiTR/3.png',
+  'assets/EmotiTR/4.png',
+  'assets/EmotiTR/5.png',
+  'assets/EmotiTR/6.png',
+];
+
 List<String> _screens(int startIndex, {int length = 3}) {
   return List.generate(length, (offset) {
     final index = (startIndex + offset) % _playStoreScreenshots.length;
@@ -67,6 +77,23 @@ List<ProjectUtils> workProjectUtils = [];
 // ###############
 // HOBBY PROJECTS
 List<ProjectUtils> hobbyProjectUtils = [
+  ProjectUtils(
+    image: 'assets/EmotiTR/logo.jpg',
+    title: 'Emoti',
+    subtitle:
+        'Emoti, arkadaşlarınızla görüntülü görüşebileceğiniz ve aynı anda videoları senkronize olarak izleyebileceğiniz (Birlikte İzle) modern bir iletişim platformudur. Uçtan uca şifreleme ve Google Sign-In ile güvenli iletişim sunar.',
+    screenshots: _emotiTrScreenshots,
+    techStack: const [
+      'Flutter',
+      'Dart',
+      'BLoC',
+      'Firebase (Auth, Firestore)',
+      'WebRTC (Video Call)',
+      'Google Sign-In',
+      'Google Drive API',
+      'Clean Architecture',
+    ],
+  ),
   ProjectUtils(
     image: 'assets/AnimeAppStoreMağzaTR/logo.jpg',
     title: 'AI AnimeCreator',

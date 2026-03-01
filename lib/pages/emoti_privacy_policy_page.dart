@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class _EmotiColors {
   static const Color backgrounddark = Color(0xFF1A1D21);
-  static const Color darkBlue = Color(0xFF1A1D21);
   static const Color darkABlue = Color(0xFF1E2229);
   static const Color mutedBlue =
       Color(0xFF65B5CD); // Fixed incomplete hex to a likely muted blue
