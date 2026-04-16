@@ -199,7 +199,23 @@ class ContactSection extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          const SizedBox(height: 28),
+          TextButton.icon(
+            onPressed: () =>
+                Navigator.of(context).pushNamed('/support'),
+            icon: const Icon(
+              Icons.support_agent_outlined,
+              color: CustomColor.bluePrimary,
+            ),
+            label: const Text(
+              'Mobil uygulamalar — Destek',
+              style: TextStyle(
+                color: CustomColor.bluePrimary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
         ],
       ),
     );

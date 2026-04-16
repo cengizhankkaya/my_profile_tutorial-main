@@ -13,6 +13,18 @@ class Footer extends StatelessWidget {
       alignment: Alignment.center,
       child: Column(
         children: [
+          TextButton(
+            onPressed: () =>
+                Navigator.of(context).pushNamed('/support'),
+            child: const Text(
+              'Uygulama desteği / Support',
+              style: TextStyle(
+                color: CustomColor.bluePrimary,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
           const Text(
             "Cengizhan Kaya tarafından Flutter 3.38.1 ile geliştirildi",
             style: TextStyle(
