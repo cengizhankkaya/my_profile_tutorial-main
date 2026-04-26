@@ -163,11 +163,12 @@ List<ProjectUtils> hobbyProjectUtils = [
   ),
   ProjectUtils(
       image: 'assets/abc123/logo.png',
-      title: 'Abc123',
+      title: 'Abc1234',
       subtitle:
           'Abc123, çocukların hem eğlenmelerini hem de öğrenmelerini sağlayan bir çizim uygulamasıdır. Bu uygulama, çocukların yaratıcılıklarını ve sanatsal yeteneklerini geliştirmelerine yardımcı olur. Çocuklarınızın eğlenirken öğrenmelerini sağlayın ve onların yaratıcılığını serbest bırakın!',
       androidLink:
           'https://play.google.com/store/apps/details?id=com.cengizhan.abc123',
+      iosLink: 'https://apps.apple.com/tr/app/abc1234/id6762213643?l=tr',
       screenshots: _abc123Screenshots,
       galleryAspectRatio: 16 / 9,
       techStack: const [
