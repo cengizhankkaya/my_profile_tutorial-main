@@ -199,6 +199,10 @@ class _SupportPageState extends State<SupportPage> {
                         label: t.privacyAbc,
                         route: '/abc1234-privacy-policy',
                       ),
+                      _PolicyLink(
+                        label: t.privacyPozal,
+                        route: '/pozal-privacy-policy',
+                      ),
                     ],
                   ),
                 ),
@@ -370,6 +374,9 @@ class _SupportCopy {
 
   String get privacyAbc =>
       en ? 'Abc1234 — Privacy policy' : 'Abc1234 — Gizlilik politikası';
+
+  String get privacyPozal =>
+      en ? 'Pozal — Privacy policy' : 'Pozal — Gizlilik politikası';
 
   String get footerNote => en
       ? 'Developer: Cengizhan Kaya. This page is intended for end-user support and review by app stores.'

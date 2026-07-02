@@ -4,6 +4,7 @@ import 'package:my_portfolio/pages/abc1234_privacy_policy_page.dart';
 import 'package:my_portfolio/pages/dua_iqra_privacy_policy_page.dart';
 import 'package:my_portfolio/pages/emoti_privacy_policy_page.dart';
 import 'package:my_portfolio/pages/home_page.dart';
+import 'package:my_portfolio/pages/pozal_privacy_policy_page.dart';
 import 'package:my_portfolio/pages/support_page.dart';
 
 /// Web'de doğrudan URL (hash veya path) ile açılışta doğru ekranı seçer.
@@ -14,6 +15,7 @@ String readWebLaunchPath() {
     '/dua-iqra-privacy-policy',
     '/emoti-privacy-policy',
     '/abc1234-privacy-policy',
+    '/pozal-privacy-policy',
   };
   final uri = Uri.base;
   final String candidate;
@@ -42,6 +44,8 @@ Widget launchBootstrapHome() {
       return const EmotiPrivacyPolicyPage();
     case '/abc1234-privacy-policy':
       return const Abc1234PrivacyPolicyPage();
+    case '/pozal-privacy-policy':
+      return const PozalPrivacyPolicyPage();
     default:
       return const HomePage();
   }
