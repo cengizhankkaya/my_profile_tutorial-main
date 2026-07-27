@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/utils/project_utils.dart';
 
 import '../constants/colors.dart';
+import '../utils/external_link.dart';
 import 'animated_widgets.dart';
-import 'dart:js' as js;
 
 class ProjectCardWidget extends StatefulWidget {
   const ProjectCardWidget({
@@ -193,22 +193,19 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                       _StoreButton(
                         label: "Google Play'de aç",
                         assetPath: "assets/android_icon.png",
-                        onTap: () => js.context
-                            .callMethod("open", [project.androidLink]),
+                        onTap: () => openExternalLink(project.androidLink!),
                       ),
                     if (project.iosLink != null)
                       _StoreButton(
                         label: "App Store'da aç",
                         assetPath: "assets/ios_icon.png",
-                        onTap: () =>
-                            js.context.callMethod("open", [project.iosLink]),
+                        onTap: () => openExternalLink(project.iosLink!),
                       ),
                     if (project.webLink != null)
                       _StoreButton(
                         label: "Web'de görüntüle",
                         assetPath: "assets/web_icon.png",
-                        onTap: () =>
-                            js.context.callMethod("open", [project.webLink]),
+                        onTap: () => openExternalLink(project.webLink!),
                       ),
                   ],
                 ),
@@ -311,22 +308,19 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                             _StoreButton(
                               label: "Google Play'de aç",
                               assetPath: "assets/android_icon.png",
-                              onTap: () => js.context
-                                  .callMethod("open", [project.androidLink]),
+                              onTap: () => openExternalLink(project.androidLink!),
                             ),
                           if (project.iosLink != null)
                             _StoreButton(
                               label: "App Store'da aç",
                               assetPath: "assets/ios_icon.png",
-                              onTap: () =>
-                                  js.context.callMethod("open", [project.iosLink]),
+                              onTap: () => openExternalLink(project.iosLink!),
                             ),
                           if (project.webLink != null)
                             _StoreButton(
                               label: "Web'de görüntüle",
                               assetPath: "assets/web_icon.png",
-                              onTap: () =>
-                                  js.context.callMethod("open", [project.webLink]),
+                              onTap: () => openExternalLink(project.webLink!),
                             ),
                         ],
                       ),

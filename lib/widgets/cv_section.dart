@@ -879,10 +879,12 @@ class _CvSectionState extends State<CvSection>
                         duration: Duration(milliseconds: 400 + (index * 50)),
                         curve: Curves.easeOutBack,
                         builder: (context, skillValue, child) {
+                          final clampedSkillValue =
+                              skillValue.clamp(0.0, 1.0).toDouble();
                           return Transform.scale(
-                            scale: skillValue,
+                            scale: clampedSkillValue,
                             child: Opacity(
-                              opacity: skillValue,
+                              opacity: clampedSkillValue,
                               child: Container(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: isSmallScreen ? 12 : 14,

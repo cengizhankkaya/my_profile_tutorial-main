@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-// ignore: deprecated_member_use
-import 'dart:js' as js;
 
 import '../constants/colors.dart';
 import '../constants/sns_links.dart';
+import '../utils/external_link.dart';
 import 'animated_widgets.dart';
 
 class MainDesktop extends StatelessWidget {
@@ -125,7 +124,7 @@ class MainDesktop extends StatelessWidget {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          js.context.callMethod('open', [SnsLinks.github]);
+                          openExternalLink(SnsLinks.github);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,

@@ -8,9 +8,8 @@ import 'package:my_portfolio/widgets/main_mobile.dart';
 import 'package:my_portfolio/widgets/projects_section.dart';
 import 'package:my_portfolio/widgets/skills_desktop.dart';
 import 'package:my_portfolio/widgets/skills_mobile.dart';
-// ignore: deprecated_member_use
-import 'dart:js' as js;
 import '../constants/size.dart';
+import '../utils/external_link.dart';
 
 import '../widgets/drawer_mobile.dart';
 import '../widgets/footer.dart';
@@ -152,7 +151,7 @@ class _HomePageState extends State<HomePage> {
   void scrollToSection(int navIndex) {
     if (navIndex == 5) {
       // open a blog page
-      js.context.callMethod('open', [SnsLinks.blog]);
+      openExternalLink(SnsLinks.blog);
       return;
     }
 
